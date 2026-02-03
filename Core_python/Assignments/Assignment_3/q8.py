@@ -10,10 +10,12 @@ print("To login in system please enter username & password :")
 usr = str(input("Username : "))
 pd = str(input("Password : "))
 
-rdnum = id(usr)
+rdnum = id(usr) #storing id of string object as it gives us random id everytime
+
 if (username == usr and pswd == pd):
     print(f'Captcha : {rdnum}')
     usrcpt = int(input("Enter any for digits in sequence from captcha : "))
+    
     if str(usrcpt) in str(rdnum):
         print("Logic successfull")
     else:
