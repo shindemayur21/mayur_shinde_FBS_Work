@@ -6,27 +6,43 @@
 # For unit above 250 Rs. 1.50/unit
 # An additional surcharge of 20% is added to the bill
 
-uCharges = int(input("Electricity charges per unit : "))
 units = int(input("Electricity units : "))
 
-amt = uCharges * units
+remUnit = units
 
-if units <= 50:
-    totAmt = (amt + (amt * 0.50))
-    totBill = (totAmt + (totAmt * 0.2)) #Adding 20% to the bill
-    print(f'Total bill amount is {totBill} Rs.')
-    
-elif units > 50 and units <= 150:
-    totAmt = (amt + (amt * 0.75))
-    totBill = (totAmt + (totAmt * 0.2)) #Adding 20% to the bill
-    print(f'Total bill amount is {totBill} Rs.')
+if remUnit > 50: # first 50 units (0-50)
+    remUnit = units - 50
+    Amt = (50 + (50 * 0.50))
+    totBill = (Amt * 0.2) + Amt #Adding 20% to the bill
+    print(f'Amount of first 50 units : {totBill}')
+        
+    if remUnit > 100: # next 100 units (50-150)
+        remUnit = units - 100 # 120
+        Amt = (100 + (100 * 0.75))
+        totBill += Amt
+        totBill = totBill + (totBill * 0.20) #Adding 20% to the bill
+        print(f'Amount of (50-150) units : {totBill}')
 
-elif units > 150 and units <= 250:
-    totAmt = (amt + (amt * 1.20))
-    totBill = (totAmt + (totAmt * 0.2)) #Adding 20% to the bill
-    print(f'Total bill amount is {totBill} Rs.')
+        if remUnit > 100: # next 100 units (150-250)
+            remUnit = units - 100 # 20
+            Amt = (100 + (100 * 1.20))
+            totBill += Amt
+            totBill = totBill + (totBill * 0.20) #Adding 20% to the bill
+            print(f'Amount of (150-250) units : {totBill}')
 
-elif units > 250:
-    totAmt = (amt + (amt * 1.50))
-    totBill = (totAmt + (totAmt * 0.2)) #Adding 20% to the bill
-    print(f'Total bill amount is {totBill} Rs.')
+            if remUnit > 100: # next (250 above) units
+                remUnit = units - 100 # 20
+                Amt = (remUnit + (remUnit * 1.50))
+                totBill += Amt
+                totBill = totBill + (totBill * 0.20) #Adding 20% to the bill
+                print(f'Amount of remaining units : {totBill}')
+            else:
+                remUnit = units - 100 
+                Amt = (remUnit + (remUnit * 1.50))
+                totBill += Amt
+                totBill = totBill + (totBill * 0.20) #Adding 20% to the bill
+                print(f'Amount of remaining units : {totBill}')
+else:
+    Amt = (remUnit + (remUnit * 0.50)) # if units are less than 50 (0-50)
+    totBill = (Amt + (Amt * 0.2)) #Adding 20% to the bill
+    print(f'Amount of first 50 units : {totBill}')
