@@ -1,0 +1,134 @@
+Q1) Write an SQL query to list all books written by author 'Loni' with price less than 600.
+-- select * from books
+    -> where author_name='loni' and cost<600;
+	
+Q2) Write an SQL query to display issue details of books that are not returned yet.
+-- select * from issue
+    -> where return_date is null;
+	
+Q3) Write an SQL query to update all blank return_date values to '2025-12-31' excluding issue
+IDs 7005 and 7006.
+-- update issue
+    -> set return_date='2025-12-31'
+    -> where issue_id not in(7005,7006);
+	
+Q4) Write an SQL query to display issue details of books issued for more than 30 days.
+-- 
+
+Q5) Write an SQL query to list all books priced between 500 and 750 and belonging to category
+'Database'.
+-- select * from books
+    -> where cost between 500 and 750 and category='database';
+	
+Q6) Write an SQL query to list all books belonging to categories Science, Database, Fiction, or
+Management.
+-- select * from books
+    -> where category in('science','database','fiction','management');
+	
+Q7) Write an SQL query to list all members in descending order of penalty amount.
+-- select * from member
+    -> order by penalty_amount desc;
+	
+Q8) Write an SQL query to update book number 103 with cost = 300 and category = 'RDBMS'.
+-- update books
+    -> set cost=300, category='rdbs'
+    -> where book_no=103;
+	
+Q9) Write an SQL query to list all books sorted by category (ascending) and price (descending).
+-- select * from books
+    -> order by category asc, cost desc;
+	
+Q10) Write an SQL query to list all books whose name contains the word 'SQL'.
+-- select * from books
+    -> where book_name like '%sql%';
+	
+Q11) Write an SQL query to display Lib_Issue_Id, Issue_Date, Return_Date and number of days
+the book was issued
+-- 
+
+Q12) Write an SQL query to list member details ordered by their joining date.
+-- select * from member
+    -> order by acc_open_date asc;
+	
+Q13) Write an SQL query to count total books issued to member ID 1.
+-- select count(book_no) from issue
+    -> where member_id=1;
+	
+Q14) Write an SQL query to display total penalty due for all members.
+-- select sum(penalty_amount) from member;
+
+Q15) Write an SQL query to display total number of members.
+-- select count(member_id) as 'Total Member' from member;
+
+Q16) Write an SQL query to display total number of books issued.
+-- select count(issue_id) as 'Total issued books' from issue;
+
+Q17) Write an SQL query to display average membership fees paid by all members.
+-- select round(avg(fees_paid),0) as "Average fees paid" from member;
+
+Q18) Write an SQL query to display each category and number of books in that category
+-- select category, count(book_no)
+    -> from books
+    -> group by category;
+
+Q19) Write an SQL query to display book_no and number of times each book is issued, sorted
+by count descending.
+-- select count(book_no)
+    -> from books
+    -> group by category
+    -> order by count(book_no) desc;
+	
+Q20) Write an SQL query to display maximum, minimum, total and average penalty amount
+from Member table.
+-- select max(penalty_amount), min(penalty_amount), sum(penalty_amount), avg(penalty_amount) from member;
+
+Q21) Write an SQL query to display member IDs who have issued more than 2 books.
+-- select member_id, count(book_no) from issue
+    -> group by member_id
+    -> having count(book_no)>2;
+	
+Q22) Write an SQL query to display member_id, book_no and number of times the same book
+was issued by that member.
+-- select member_id, book_no, count(*) as issue_count from issue
+    -> group by member_id, book_no;
+	
+Q23) Write an SQL query to display month-wise count of books issued, sorted by count
+descending.
+-- select month(issue_date) as "Per Month",count(book_no)
+    -> from issue
+    -> group by month(issue_date)
+    -> order by count(book_no) desc;
+	
+Q24) Write an SQL query to list book numbers of books that have never been issued.
+--  select book_no from books
+    -> where book_no not in(select book_no from issue);
+	
+Q25) Write an SQL query to list member IDs who exist in Member table and have issued at least
+one book.
+-- select member_id
+    -> from issue
+    -> group by member_id
+    -> having count(book_no)>=1;
+	
+method 2:
+-- select distinct member_id from issue
+    -> where member_id in(select member_id from member);
+	
+Q26) Write an SQL query to display member ID with highest and lowest number of books
+issued.
+-- (SELECT member_id, COUNT(book_no) AS total_books
+    ->  FROM issue
+    ->  GROUP BY member_id
+    ->  ORDER BY total_books DESC
+    ->  LIMIT 1)
+    -> UNION
+    -> (SELECT member_id, COUNT(book_no) AS total_books
+    ->  FROM issue
+    ->  GROUP BY member_id
+    ->  ORDER BY total_books ASC
+    ->  LIMIT 1);
+	
+Q27) Write an SQL query to list issue details for books issued in December or July
+-- select * from issue
+    -> where month(issue_date) in(7,12);
+	
