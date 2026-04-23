@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+</head>
+
+<body>
+
+    <img src="https://i.postimg.cc/9FLzZYBS/logo.jpg" height="100" width="150">
+    <hr>
+    <h1><u>Student Registration Form</u></h1>
+
+    <form action="submit.html" method="post">
+
+        <!-- Text Input -->
+        <label><b>Full Name:</b></label><br>
+        <input type="text" name="fullname" placeholder="Enter your full name" value=""><br><br>
+
+        <!-- Email Input -->
+        <label><b>Email:</b></label><br>
+        <input type="email" name="email" placeholder="example@email.com"><br><br>
+
+        <!-- Phone Number -->
+        <label><b>Phone Number:</b></label><br>
+        <input type="password" name="password" placeholder="e.g. 9876543210"><br><br>
+
+        <!-- Date -->
+        <label><b>Birth Date:</b></label><br>
+        <input type="date" name="dob"><br><br>
+
+        <!-- Radio Buttons -->
+        <label><b>Select Gender:</b></label><br>
+        <input type="radio" name="gender" value="male"> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        <input type="radio" name="gender" value="Other"> Othere<br><br>
+
+        <!-- Checkbox -->
+        <label><b>Courses Interested In:</b></label><br>
+        <input type="checkbox" name="skill" value="java"> Java Full Stack<br>
+        <input type="checkbox" name="skill" value="python"> Python Full Stack<br>
+        <input type="checkbox" name="skill" value="testing"> React JS<br>
+        <input type="checkbox" name="skill" value="python"> Data Science<br><br>
+
+
+        <!-- Combo Box (Dropdown) -->
+        <label><b>Preferred Batch Time:</b></label><br>
+        <select name="course">
+            <option value="">-- Select --</option>
+            <option value="c">10 AM</option>
+            <option value="java">2 PM</option>
+            <option value="python">8 AM</option>
+            <option value="web">5 PM</option>
+        </select>
+        <br><br>
+
+        <!-- Rich Text Box (Textarea) -->
+        <label><b>Write About Yourself:</b></label><br>
+        <textarea name="description" rows="5" cols="40" placeholder="Tell us about yourself..."></textarea>
+        <br><br>
+
+        <label><b>Rate Your Current Skill Level (1-10):</b></label><br>
+        <input type="number"><br><br>
+
+        <!-- Submit & Reset -->
+        <input type="submit" value="Submit Form">
+        <input type="reset" value="Reset Form">
+
+    </form>
+    <hr>
+    <p>
+        <b><u>Address:</u></b> Aditya Centeegra Office no 7, 3rd floor Near IDBI Bank, Dnyaneshware Paduka chowk,
+        Ferguson College Rd, Pune, Maharashtra 411005
+    </p>
+
+</body>
+
+</html>
